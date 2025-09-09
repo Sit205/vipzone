@@ -6,73 +6,133 @@
   <title>Solar Explorer</title>
   <style>
     body {
-      background: #0f0f1a;
-      color: #fff;
+      margin: 0;
+      background: #0d0d1a;
       font-family: Arial, sans-serif;
-      padding: 20px;
+      color: #fff;
+      overflow: hidden;
     }
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
+
+    h1.logo {
+      text-align: center;
+      margin: 20px;
       color: #ffdd57;
     }
-    .logo span {
-      font-size: 16px;
+    h1.logo span {
+      display: block;
+      font-size: 14px;
       color: #aaa;
     }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
     .menu {
+      width: 200px;
+      background: #111122;
+      padding: 20px;
+    }
+
+    .menu label {
       display: block;
-      margin: 15px 0;
+      margin: 10px 0;
       padding: 10px;
-      background: #1f1f2e;
-      border-radius: 10px;
+      border-radius: 5px;
       cursor: pointer;
+      background: #1a1a33;
       transition: 0.3s;
     }
-    .menu:hover {
+
+    .menu label:hover {
       background: #292944;
     }
-    .info {
-      margin-left: 10px;
-    }
-    .info h2 {
-      margin: 5px 0;
-      font-size: 20px;
-    }
-    .info h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #ffdd57;
-    }
+
     input[type="radio"] {
       display: none;
+    }
+
+    .planet-info {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 24px;
+    }
+
+    .planet-info img {
+      width: 250px;
+      height: 250px;
+      object-fit: contain;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
+  <h1 class="logo">Solar Explorer <span>in HTML, CSS & JS</span></h1>
 
-  <h1 class="logo">
-    Solar explorer <br>
-    <span>in only CSS</span>
-  </h1>
+  <div class="container">
+    <!-- เมนูด้านซ้าย -->
+    <div class="menu">
+      <input type="radio" id="pluto" name="planet" checked>
+      <label for="pluto">Pluto</label>
 
-  <!-- Pluto -->
-  <input class="planet9" id="pluto" type="radio" name="planet">
-  <label class="menu pluto" for="pluto">
-    <div class="info">
+      <input type="radio" id="neptune" name="planet">
+      <label for="neptune">Neptune</label>
+
+      <input type="radio" id="earth" name="planet">
+      <label for="earth">Earth</label>
+
+      <input type="radio" id="mars" name="planet">
+      <label for="mars">Mars</label>
+    </div>
+
+    <!-- ส่วนข้อมูลดาว -->
+    <div class="planet-info" id="planet-info">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Pluto_in_True_Color_-_High-Res.jpg" alt="Pluto">
       <h2>Pluto</h2>
-      <h3>39.5 AU</h3>
+      <p>39.5 AU from the Sun</p>
     </div>
-  </label>
+  </div>
 
-  <!-- Neptune -->
-  <input class="planet8" id="neptune" type="radio" name="planet">
-  <label class="menu neptune" for="neptune">
-    <div class="info">
-      <h2>Neptune</h2>
-      <h3>30.06 AU</h3>
-    </div>
-  </label>
+  <script>
+    const planetInfo = document.getElementById("planet-info");
 
+    const planets = {
+      pluto: {
+        name: "Pluto",
+        distance: "39.5 AU",
+        image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Pluto_in_True_Color_-_High-Res.jpg"
+      },
+      neptune: {
+        name: "Neptune",
+        distance: "30.06 AU",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
+      },
+      earth: {
+        name: "Earth",
+        distance: "1 AU",
+        image: "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+      },
+      mars: {
+        name: "Mars",
+        distance: "1.52 AU",
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+      }
+    };
+
+    document.querySelectorAll("input[name='planet']").forEach(input => {
+      input.addEventListener("change", (e) => {
+        const planet = planets[e.target.id];
+        planetInfo.innerHTML = `
+          <img src="${planet.image}" alt="${planet.name}">
+          <h2>${planet.name}</h2>
+          <p>${planet.distance} from the Sun</p>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>
