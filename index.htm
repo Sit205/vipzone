@@ -2,23 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LAOSHUG77</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Explorer</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+    body {
+      background: #0f0f1a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 100%;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffdd57;
+    }
+    .logo span {
+      font-size: 16px;
+      color: #aaa;
+    }
+    .menu {
+      display: block;
+      margin: 15px 0;
+      padding: 10px;
+      background: #1f1f2e;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .menu:hover {
+      background: #292944;
+    }
+    .info {
+      margin-left: 10px;
+    }
+    .info h2 {
+      margin: 5px 0;
+      font-size: 20px;
+    }
+    .info h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #ffdd57;
+    }
+    input[type="radio"] {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://ufasboclub-zplay.store" allowfullscreen></iframe>
+
+  <h1 class="logo">
+    Solar explorer <br>
+    <span>in only CSS</span>
+  </h1>
+
+  <!-- Pluto -->
+  <input class="planet9" id="pluto" type="radio" name="planet">
+  <label class="menu pluto" for="pluto">
+    <div class="info">
+      <h2>Pluto</h2>
+      <h3>39.5 AU</h3>
+    </div>
+  </label>
+
+  <!-- Neptune -->
+  <input class="planet8" id="neptune" type="radio" name="planet">
+  <label class="menu neptune" for="neptune">
+    <div class="info">
+      <h2>Neptune</h2>
+      <h3>30.06 AU</h3>
+    </div>
+  </label>
+
 </body>
 </html>
